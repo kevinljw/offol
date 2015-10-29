@@ -2,6 +2,7 @@ var express = require('express');
 var server = express();
 var bodyParser = require('body-parser');
 var path = require('path');
+var http = require('http');
 var api = require('./routes/api');
 var config = require('./config');
 
@@ -14,8 +15,8 @@ server.use(function (req, res, next) {
   next()
 });
 
-var port = process.env.PORT || 8934;
-
+//var port = process.env.PORT || 8934;
+server.set('port', process.env.PORT ||  8934);
 //Routing
 server.get('/', function(req, res) {
 
@@ -31,8 +32,12 @@ server.get('/secret', function(req, res) {
 //More Setup
 server.use(express.static(__dirname + '/static'));
 
-server.listen(port);
-console.log('loffo running on port ' + port);
+//server.listen(port);
+//console.log('loffo running on port ' + port);
 
 server.get('/getInfo',  api.getInfo);
 server.post('/buyInfo',  api.buyInfo);
+
+http.createServer(server).listen(server.get('port'),'0.0.0.0', function() {
+    console.log("Express server listening on port " + server.get('port'));
+});
