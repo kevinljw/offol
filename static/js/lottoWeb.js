@@ -18,7 +18,7 @@ function updateInfo(){
         url: '/getInfo'
     }).success(function (response) {
 //        console.log(response.NeedForPeople);
-var nowProgress = Math.ceil(response.NowJoined/response.NeedForPeople);  
+var nowProgress = Math.ceil(response.NowJoined/response.NeedForPeople*100);  
 logResponse("[updateInfo] progress:"+nowProgress);        $('#needForP').html(response.NeedForPeople);
         $('#joinP').html(response.NowJoined+"<br>人次已參與");
 $('#joinP_R').html(response.NeedForPeople-response.NowJoined+"<br>人次剩餘"); 
