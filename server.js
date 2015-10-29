@@ -3,6 +3,7 @@ var server = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var api = require('./routes/api');
+var config = require('./config');
 
 server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'ejs');
