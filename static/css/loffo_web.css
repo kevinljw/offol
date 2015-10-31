@@ -60,8 +60,10 @@ body {
 }
 
 .social-media {
-    width: 25%;
-    height: 25%;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+/*    height: 25%;*/
 }
 
 .pull-right {
@@ -73,7 +75,8 @@ body {
     width: 100%;
     text-align: center;
     /*background: url('http://placehold.it/1900x500') no-repeat center center scroll;*/
-    background-color: #f2f0f3;
+/*    background-color: #f2f0f3;*/
+    background-color: #f99595;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -81,8 +84,8 @@ body {
 }
 
 .sectionTitle {
-    padding-top: 50px;
-    padding-bottom: 20px;
+/*    padding-top: 50px;*/
+    padding-bottom: 30px;
 }
 
 .sectionTitle h2 {
@@ -91,7 +94,7 @@ body {
 }
 
 .headline {
-    padding: 18% 0;
+    padding: 0 0 10% 0;
 }
 
 .headline h1 {
@@ -274,6 +277,8 @@ footer {
     float:left; 
     margin-left: -10px;
     padding: 0 10px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 #joinP_R {
@@ -281,4 +286,27 @@ footer {
     margin-right: -10px;
     float:right; 
      padding: 0 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+/*    background-color: #FFFF00;*/
+    color: #96eab8;
+}
+
+.imgHeadIcon {
+    width: 50px;
+}
+
+.HeadIcon {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 10px;
+    display: block;
+    
+    
+}
+
+.callForPdt {
+    height: 300px;
 }

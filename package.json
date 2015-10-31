@@ -2,6 +2,8 @@
   "name": "lottoWeb",
   "main": "server.js",
   "dependencies": {
+    "externalip": "*",
+    "nodemailer": "*",
     "http": "*",
     "ejs": "^1.0.0",
     "express": "^4.7.2",

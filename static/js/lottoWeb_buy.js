@@ -4,11 +4,13 @@ $(function () {
     $("#submitBuyBtn").click(function() {
             var inputEmail = $("#exampleInputEmail").val();
             var inputNum = $("#exampleInputNum").val();
-            
+            console.log(document.forms["myForm"]["seChk"].checked);
             if(validateForm()){    
                 var thisMsg={
                             'email': inputEmail,
-                            'number': inputNum
+                            'number': inputNum,
+                            'sendOrNot':
+document.forms["myForm"]["seChk"].checked
                 }
                 submitBuyInfo(thisMsg);
             }
