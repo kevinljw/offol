@@ -15,9 +15,11 @@ function iniLoadFile() {
     fs.readFile('data1.json', 'utf8', function (err,data) {
         NowAllData = JSON.parse(data);
 //        console.log("Load Complete:\n"+JSON.stringify(NowAllData));
+        if(NowAllData.length>0){
         NowAllData.forEach(function(eachItem){
             joinP+=eachItem.Amount;
         })
+        };
     });
 //    console.log(ticketBuyArr);
 }
