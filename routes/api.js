@@ -1,5 +1,6 @@
 var fs = require('fs');
 var md5 = require('md5');
+var moment = require('moment');
 var needForPeople = 3333;
 var joinP = 0;
 var NowAllData;
@@ -38,8 +39,8 @@ exports.readData = function(req, res) {
       for (var i = 0, len = (thisData.length>100? 100: thisData.length); i < len; i++) {
         var thisItem ={
             'Email': thisData[i].Email.substr(0,4)+"*"+thisData[i].Email.substr(5),
-            'Amount':thisData[i].Amount
-            
+            'Amount':thisData[i].Amount,
+            'Time': moment(thisData[i].Time).format()
         };      
         cullingData.push(thisItem);
       
@@ -78,9 +79,11 @@ exports.buyInfo = function(req, res) {
             var pushItem = {
                 'Email' : thisGuysEmail,
                 'Amount' : thisGuysBuyNum,
-                'Serial': allSeriels
+                'Serial': allSeriels,
+                'Time': moment()
             }
             NowAllData.push(pushItem);
+            console.log(pushItem);
             fs.writeFile("data1.json", JSON.stringify(NowAllData), function(err) {
             if(err){
                 return console.log(err);
