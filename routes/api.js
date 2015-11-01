@@ -1,9 +1,9 @@
 var fs = require('fs');
 var md5 = require('md5');
 var moment = require('moment');
-var needForPeople = 3333;
+var needForPeople = 4000;
 var joinP = 0;
-var NowAllData;
+var NowAllData = [];
 var ticketBuyArr = new Array(needForPeople);
 
 
