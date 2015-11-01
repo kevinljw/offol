@@ -1,10 +1,17 @@
 var updateFlg = false;
+var isFocusFlg = false;
+//var historyNum = 0;
 //console.log("hi");
 
 $(function () {  
 //    console.log("in");    
     updateInfo();
     updateRecord();
+});
+
+$(document).ready(function(){
+//  setInterval(updateRecord, 5000);
+    setInterval( CheckPageFocus, 200 );
 });
 
 function logResponse(response) {
@@ -21,9 +28,12 @@ function updateRecord(){
 //        console.log(response);
         var userDataInfo = response;
 //        console.log(userDataInfo);
-                userDataInfo.forEach(function(elemet){
+        
+        $('#whoBuy').empty();        userDataInfo.forEach(function(elemet){
+        
          $('#whoBuy').append("<tr><td >"+elemet.Time+"</td> <td >"+elemet.Email+"</td> <td>"+elemet.Amount+"</td> </tr>");
         });
+    
        
     }).error(function (err) {
 //        logResponse("Error fetching myInfo data.");
@@ -50,4 +60,14 @@ $('#nowPdtBar').css('width', nowProgress+'%').attr('aria-valuenow', nowProgress)
     }).error(function (err) {
         logResponse("Error fetching myInfo data.");
     });
+}
+function CheckPageFocus() {
+  if ( document.hasFocus()) {
+    if(!isFocusFlg){
+        isFocusFlg = true;
+        updateRecord();
+    }
+  }else{
+    isFocusFlg = false;
+  }
 }
