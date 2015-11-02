@@ -312,8 +312,10 @@ footer {
 }
 
 .divColla {
-    margin-left: auto;
+    width: 100%;
+}
+#btnColla{
+    width: 90%;
+    margin-left: 5%;
     margin-right: auto;
-    display: inline-block;
-    padding: 0 44%;
 }

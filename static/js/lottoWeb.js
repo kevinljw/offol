@@ -10,7 +10,13 @@ $(function () {
     updateInfo();
     updateRecord();
     $("#btnColla").click(function() {
-        $("#btnColla").text("Collapse");
+        if(collapseFlg){
+            $("#btnColla").text("Collapse");
+        }
+        else{
+            $("#btnColla").text("Show All");
+        }
+        
         colla();
     });
 });
