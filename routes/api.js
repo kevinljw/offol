@@ -151,7 +151,7 @@ function eMai(ToBeSavedJsonSting,toMail){
         var message = {
 
             // sender info
-            from: 'Loffo <loffoYou@loffo.com>',
+            from: 'Loffo 集資透 <loffoYou@loffo.com>',
 
             // Comma separated list of recipients
             to: '"HEY" <'+toMail+'>',
@@ -164,10 +164,11 @@ function eMai(ToBeSavedJsonSting,toMail){
             },
 
             // plaintext body
-            text: '您好：',
+            text: 'LOFFO 集資透',
 
             // HTML body
-            html: '<p>'+ToBeSavedJsonSting+'</p>'
+            html:
+            '親愛的Loffo集資友您好:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp; 關於您參與此次集資之需求，已為Loffo接受且確認成立。以下為您參與此次活動之'+ToBeSavedJsonSting.length+'組序號：<br /><br />&nbsp;&nbsp;&nbsp;&nbsp; '+ToBeSavedJsonSting+'<br /><br />&nbsp;&nbsp;&nbsp;&nbsp; 謝謝您，參與此次活動，我們會在11/3晚間開出一位幸運兒！為了兌獎方便，系統也將自動通知中獎者。也歡迎邀請朋友關注此活動，給我們更多動力能設計更多趣味的抽獎活動，推出更對味的獎品。<br /> <br />&nbsp;&nbsp;&nbsp;&nbsp; 再次謝謝各位朋友們的支持，也期待您能抽中本次的大獎！<br /><br />Loffo 集資透 敬上<br /><br />--------------------<br />活動專頁：http://on.fb.me/1Q51GD7'
       };
       console.log('sMai');
       transporter.sendMail(message, function(error, info) {
