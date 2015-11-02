@@ -2,6 +2,7 @@ var fs = require('fs');
 var md5 = require('md5');
 var moment = require('moment');
 var needForPeople = 4000;
+var addNullNum = 10000000;
 var joinP = 0;
 var NowAllData = [];
 var ticketBuyArr = new Array(needForPeople);
@@ -20,7 +21,22 @@ function iniLoadFile() {
             joinP+=eachItem.Amount;
         })
         };
+        var SerialChkSum = 0;
+        var SerialChkSumAll = 0;
+    NowAllData.forEach(function(element){
+            element.Serial.forEach(function(eachSerial){
+                if(ticketBuyArr[eachSerial-addNullNum]===false){
+                    ticketBuyArr[eachSerial-addNullNum]=true;
+                    SerialChkSum++;
+                }
+                SerialChkSumAll++;
+            });
+            
+        });
+        console.log("SerialChkSum="+SerialChkSum+"/"+SerialChkSumAll);
     });
+    
+    
 //    console.log(ticketBuyArr);
 }
 
@@ -127,7 +143,7 @@ function eachSerial(thisEmail, nowNum){
     for(var i=0; i<needForPeople;i++){
         if(ticketBuyArr[(thisGuysMd5cutInt+i)%needForPeople]==false){
             ticketBuyArr[(thisGuysMd5cutInt+i)%needForPeople]=true;
-            return 10000000+(thisGuysMd5cutInt+i)%needForPeople;
+            return addNullNum+(thisGuysMd5cutInt+i)%needForPeople;
         }
     }
     console.log("something wrong!");
