@@ -38,7 +38,7 @@ exports.readData = function(req, res) {
     
       var thisData = NowAllData;
       var cullingData = [];
-      for (var i = 0, len = (thisData.length>100? 100: thisData.length); i < len; i++) {
+      for (var i = 0, len = thisData.length; i < len; i++) {
         var thisItem ={
             'Email': thisData[i].Email.substr(0,4)+"*"+thisData[i].Email.substr(5),
             'Amount':thisData[i].Amount,
