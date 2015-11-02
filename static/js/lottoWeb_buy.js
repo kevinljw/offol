@@ -31,7 +31,7 @@ function submitBuyInfo(submitMsg){
         type: 'post',
         data: submitMsg
     }).success(function (response) {
-
+        alert(response.info);
     }).error(function (err) {
         logResponse("Error fetching myInfo data.");
     });

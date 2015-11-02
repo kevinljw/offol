@@ -40,16 +40,16 @@ exports.readData = function(req, res) {
       var cullingData = [];
       for (var i = 0, len = thisData.length; i < len; i++) {
         var thisItem ={
-            'Email': thisData[i].Email.substr(0,4)+"*"+thisData[i].Email.substr(5),
+            'Email': thisData[i].Email.substr(0,5)+"*"+thisData[i].Email.substr(6),
             'Amount':thisData[i].Amount,
-            'Time': moment(thisData[i].Time).format()
+            'Time': moment(thisData[i].Time).utcOffset(8).format("YYYY-MM-DD HH:mm:ss")
         };      
         cullingData.push(thisItem);
       
 //      console.log(data);
         }
 //        var readyToSendData = JSON.stringify(cullingData);
-        console.log(cullingData);
+//        console.log(cullingData);
         res.send(cullingData);
 }
 exports.buyInfo = function(req, res) {
@@ -94,8 +94,10 @@ exports.buyInfo = function(req, res) {
             }); 
             
         });
-        
-        
+        var returnItem ={
+            'info': "Success E:"+thisGuySendEmailFlg
+        }
+        res.send(returnItem);
     }
     else{
         console.log("Full!");
