@@ -32,13 +32,13 @@ server.get('/secret', function(req, res) {
 //More Setup
 server.use(express.static(__dirname + '/static'));
 
-//server.listen(port);
+server.listen(server.get('port'));
 //console.log('loffo running on port ' + port);
 
 server.get('/getInfo',  api.getInfo);
 server.post('/buyInfo',  api.buyInfo);
 server.get('/readData', api.readData);
 
-http.createServer(server).listen(server.get('port'),'0.0.0.0', function() {
-    console.log("Express server listening on port " + server.get('port'));
-});
+//http.createServer(server).listen(server.get('port'),'0.0.0.0', function() {
+//    console.log("Express server listening on port " + server.get('port'));
+//});
