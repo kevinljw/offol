@@ -4,7 +4,7 @@ var collapseFlg = true;
 var collapseNum = 20;
 //var historyNum = 0;
 //console.log("hi");
-
+var userDataInfo;
 $(function () {  
 //    console.log("in");    
     updateInfo();
@@ -38,7 +38,7 @@ function updateRecord(){
         url: '/readData'
     }).success(function (response) {
 //        console.log(response);
-        var userDataInfo = response;
+        userDataInfo = response;
         var dataLen = userDataInfo.length-1;
         $('#whoBuy').empty(); 
 //        console.log(userDataInfo);
@@ -46,16 +46,16 @@ function updateRecord(){
 //            $('#whoBuy').empty();
             
             for(var i=dataLen;i>dataLen-collapseNum;i--){
-                $('#whoBuy').append("<tr><td>#"+i+"</td><td >"+userDataInfo[i].Time+"</td> <td >"+userDataInfo[i].Email+"</td> <td>"+userDataInfo[i].Amount+"</td> </tr>");
+                $('#whoBuy').append(rowTableContent(1,i));
             
             }
             if(dataLen>collapseNum){
-            $('#whoBuy').append("<tr><td>...</td><td>...</td><td>...</td><td>...</td> </tr><tr><td>#0</td><td >"+userDataInfo[0].Time+"</td> <td >"+userDataInfo[0].Email+"</td> <td>"+userDataInfo[0].Amount+"</td> </tr>");
+            $('#whoBuy').append(rowTableContent(0,0));
             }
         }else{
             
             for(var i=dataLen;i>=0;i--){
-                $('#whoBuy').append("<tr><td>#"+i+"</td><td >"+userDataInfo[i].Time+"</td> <td >"+userDataInfo[i].Email+"</td> <td>"+userDataInfo[i].Amount+"</td> </tr>");
+                $('#whoBuy').append(rowTableContent(1,i));
             
             }
 
@@ -106,6 +106,18 @@ function colla(){
     
     collapseFlg = !collapseFlg;
     updateRecord();
+    updateInfo();
 //    console.log("colla");
 //    alert("colla");
+}
+function rowTableContent(outputType, index){
+    var returnString = "none";
+    if(outputType==0){
+        returnString = "<tr><td>...</td><td>...</td><td>...</td><td>...</td> </tr><tr><td>#0</td><td >"+userDataInfo[index].Time+"</td> <td >"+userDataInfo[index].Email+"</td> <td>"+userDataInfo[index].Amount+"</td> </tr>";
+    }
+    else{
+        returnString = "<tr data-toggle=\"collapse\" data-target=\""+"#accordion"+index+"\" class=\"clickable\"><td>#"+index+"</td><td >"+userDataInfo[index].Time+"</td> <td >"+userDataInfo[index].Email+"</td> <td>"+userDataInfo[index].Amount+"</td> </tr><tr><td  style=\"padding:2px;\" colspan=\"4\"><div id=\""+"accordion"+index+"\" class=\"collapse\">"+userDataInfo[index].Serial+"</div></td></tr>";
+    }
+//    console.log(returnString);
+    return returnString;
 }

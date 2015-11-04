@@ -55,10 +55,19 @@ exports.readData = function(req, res) {
       var thisData = NowAllData;
       var cullingData = [];
       for (var i = 0, len = thisData.length; i < len; i++) {
+        var thisGuysSerial = "";
+        thisData[i].Serial.forEach(function(element,index){
+            if(index%5==0){
+                thisGuysSerial+="<br />";
+            }
+            thisGuysSerial+=element+",";
+        });
+        
         var thisItem ={
             'Email': thisData[i].Email.substr(0,5)+"*"+thisData[i].Email.substr(6),
             'Amount':thisData[i].Amount,
-            'Time': moment(thisData[i].Time).utcOffset(8).format("YYYY-MM-DD HH:mm:ss")
+            'Time': moment(thisData[i].Time).utcOffset(8).format("YYYY-MM-DD HH:mm:ss"),
+            'Serial': thisGuysSerial.substr(0,thisGuysSerial.length-1)
         };      
         cullingData.push(thisItem);
       
